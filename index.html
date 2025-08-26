@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulário de Orçamento - Estofados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #4f9855;
+      --bg2: #0061a9;
+      --accent: #25a4ff;
+      --accent-soft: rgba(37, 164, 255, .25);
+      --text: #ffffff;
+      --muted: #ced3ff;
+      --radius: 18px;
+      --gap: 18px;
+      --shadow: 0 0 0 2px rgba(37, 164, 255, .35), 0 8px 25px rgba(0,0,0,.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { height: 100%; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      /* --- CORREÇÃO APLICADA AQUI --- */
+      min-height: 100vh; /* Garante que o body tenha no mínimo a altura da tela */
+      background:
+        radial-gradient(1200px 1200px at -20% -10%, rgba(37,164,255,.12), transparent 60%),
+        radial-gradient(900px 900px at 120% 20%, rgba(37,164,255,.10), transparent 60%),
+        linear-gradient(160deg, var(--bg2), var(--bg));
+      background-attachment: fixed; /* Fixa o fundo para que ele não role com o conteúdo */
+    }
+
+    .container { max-width: 1024px; margin: 40px auto; padding: 0 18px 60px; }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 220px;
+      height: auto;
+    }
+
+    .title {
+      font-size: clamp(20px, 3.2vw, 30px);
+      font-weight: 700; letter-spacing: .5px; margin: 0 0 20px; text-transform: uppercase;
+      text-align: center;
+    }
+
+    .card {
+      border: 2px solid var(--accent); border-radius: var(--radius); padding: 16px; background: rgba(255,255,255,.02);
+      box-shadow: var(--shadow);
+    }
+
+    .grid { display: grid; gap: var(--gap); }
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+    @media (max-width: 780px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+    label.block { display: block; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; font-size: 12px; color: var(--muted); }
+
+    .input, textarea, select {
+      width: 100%; border: 2px solid var(--accent); background: rgba(12,14,58,.35);
+      color: var(--text); padding: 12px 14px; border-radius: 12px; outline: none; font-size: 14px;
+      transition: box-shadow .2s, border-color .2s, background .2s;
+    }
+    .input:focus, textarea:focus, select:focus { box-shadow: 0 0 0 3px var(--accent-soft); border-color: var(--accent); background: rgba(12,14,58,.55); }
+
+    fieldset { border: none; margin: 0; padding: 0; }
+    legend { font-weight: 700; text-transform: uppercase; margin-bottom: 10px; letter-spacing: .4px; }
+
+    .box { border: 2px solid var(--accent); border-radius: var(--radius); padding: 14px; background: rgba(255,255,255,.02); }
+
+    .row { display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; }
+    .checkline { display: grid; grid-template-columns: repeat(2, minmax(180px, 1fr)); gap: 10px 18px; }
+    @media (max-width: 520px) { .checkline { grid-template-columns: 1fr; } }
+
+    .option { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+
+    .footer-grid { display: grid; gap: var(--gap); grid-template-columns: 1fr; }
+
+    .actions { position: sticky; bottom: 0; background: linear-gradient(180deg, transparent, rgba(11,13,59,.9) 40%, rgba(11,13,59,1)); padding: 12px 0 6px; margin-top: 10px; }
+    .btns { display: flex; gap: 10px; }
+    button {
+      appearance: none; border: 2px solid var(--accent); background: rgba(37,164,255,.12);
+      padding: 10px 14px; border-radius: 12px; color: var(--text); font-weight: 600; cursor: pointer;
+    }
+    button:hover { background: rgba(37,164,255,.2); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="https://uploads.onecompiler.io/43uv5zmgq/43uv4s57a/Logo%20Bioclean%20Estofados%20-%20PNG%20cropped.png" alt="Logo Bioclean Estofados">
+    </div>
+    <h1 class="title">Orçamento de Higienização de Estofados</h1>
+
+    <!-- Cabeçalho: Cliente/Contato -->
+    <div class="grid grid-2">
+      <div class="card">
+        <label class="block" for="cliente">Cliente</label>
+        <input id="cliente" name="cliente" class="input" placeholder="Nome do cliente" />
+      </div>
+      <div class="card">
+        <label class="block" for="contato">Contato</label>
+        <input id="contato" name="contato" class="input" placeholder="Telefone / WhatsApp / E‑mail" />
+      </div>
+    </div>
+
+    <!-- Estofado + Serviço -->
+    <div class="grid" style="margin-top: var(--gap);">
+      <div class="card">
+        <label class="block" for="estofado">Estofado</label>
+        <input id="estofado" name="estofado" class="input" placeholder="Ex.: Sofá 3 lugares, 2 poltronas, jogo de cadeiras…" />
+      </div>
+      <div class="card">
+        <label class="block" for="servico">Serviço a ser realizado</label>
+        <input id="servico" name="servico" class="input" placeholder="Ex.: Higienização + Impermeabilização" />
+      </div>
+    </div>
+
+    <!-- Tecidos / Sujidade -->
+    <div class="grid grid-2" style="margin-top: var(--gap);">
+      <div class="card">
+        <fieldset>
+          <legend>TECIDOS</legend>
+          <div class="checkline">
+            <label class="option"><input type="checkbox" name="tecido" value="suede"/> Suede</label>
+            <label class="option"><input type="checkbox" name="tecido" value="couro"/> Couro</label>
+            <label class="option"><input type="checkbox" name="tecido" value="linho"/> Linho</label>
+            <label class="option"><input type="checkbox" name="tecido" value="camurca"/> Camurça</label>
+            <label class="option"><input type="checkbox" name="tecido" value="chenille"/> Chenille</label>
+            <label class="option"><input type="text" class="input" placeholder="Outros (descreva)"/></label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="card">
+        <fieldset>
+          <legend>Níveis de Sujidade</legend>
+          <div class="row">
+            <label class="option"><input type="radio" name="sujidade" value="leve"/> Leve</label>
+            <label class="option"><input type="radio" name="sujidade" value="media"/> Média</label>
+            <label class="option"><input type="radio" name="sujidade" value="pesada"/> Pesada</label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <!-- Procedimentos -->
+    <div class="card" style="margin-top: var(--gap);">
+      <fieldset>
+        <legend>Procedimentos</legend>
+        <div class="checkline">
+          <label class="option"><input type="checkbox" name="procedimentos" value="aspiracao"/> Aspiração</label>
+          <label class="option"><input type="checkbox" name="procedimentos" value="higienizacao"/> Higienização (Limpeza e desinfecção)</label>
+          <label class="option"><input type="checkbox" name="procedimentos" value="desinfeccao"/> Desinfecção</label>
+          <label class="option"><input type="checkbox" name="procedimentos" value="impermeabilizacao"/> Impermeabilização</label>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Conservação do estofado -->
+    <div class="card" style="margin-top: var(--gap);">
+      <fieldset>
+        <legend>Conservação do estofado</legend>
+        <div class="row">
+          <label class="option"><input type="radio" name="conservacao" value="perfeito"/> Em perfeito estado</label>
+          <label class="option"><input type="radio" name="conservacao" value="detalhes"/> Detalhes (anexar fotos)</label>
+        </div>
+        <div style="margin-top:10px">
+          <label class="block" for="observacoes">Observações / Detalhes</label>
+          <textarea id="observacoes" name="observacoes" class="input" rows="3" placeholder="Descreva rasgos, desgastes, furos, etc."></textarea>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Tipo de sujeira -->
+    <div class="card" style="margin-top: var(--gap);">
+      <fieldset>
+        <legend>Tipo de Sujeira</legend>
+        <div class="checkline">
+          <label class="option"><input type="checkbox" name="sujeira" value="cafe"/> Café</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="suco"/> Suco</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="vinho"/> Vinho</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="refrigerante"/> Refrigerante</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="ferrugem"/> Ferrugem</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="maquiagem"/> Maquiagem</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="tinta-caneta"/> Tinta de Caneta</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="chocolate"/> Chocolate</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="nodoas-frutas"/> Nódoas de Frutas</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="sangue"/> Sangue</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="excremento"/> Excremento Humano/Animal</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="mau-cheiro"/> Mau cheiro</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="molhos"/> Molhos</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="fungos"/> Fungos</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="graxa"/> Graxa</label>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Assinaturas e Valor -->
+    <div class="grid grid-2" style="margin-top: var(--gap);">
+      <div class="card">
+        <label class="block" for="ass-prof">Assinatura do Profissional</label>
+        <input id="ass-prof" name="ass-prof" class="input" placeholder="Nome completo" />
+      </div>
+      <div class="card">
+        <label class="block" for="ass-cli">Assinatura do Cliente</label>
+        <input id="ass-cli" name="ass-cli" class="input" placeholder="Nome completo" />
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: var(--gap);">
+      <label class="block" for="valor">Valor do Serviço</label>
+      <input id="valor" name="valor" class="input" placeholder="R$ 0,00" />
+    </div>
+
+    <!-- Ações -->
+    <div class="actions">
+      <div class="btns">
+        <button type="button" onclick="window.print()">Imprimir / Salvar em PDF</button>
+        <button type="button" id="save">Salvar no navegador</button>
+        <button type="button" id="load">Carregar dados salvos</button>
+        <button type="button" id="clear">Limpar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const storageKey = 'orcamento-estofados-v1';
+
+    function serialize() {
+      const data = {};
+      document.querySelectorAll('input, textarea, select').forEach(el => {
+        const key = el.id || el.name;
+        if (!key) return;
+
+        if (el.type === 'checkbox') {
+          data[el.name + '_' + el.value] = el.checked;
+        } else if (el.type === 'radio') {
+          if (el.checked) data[el.name] = el.value;
+        } else {
+          data[key] = el.value;
+        }
+      });
+      // Handle the "Other" text input for fabric specifically
+      const outroTecido = document.querySelector('input[type="text"][placeholder="Outros (descreva)"]');
+      if (outroTecido) {
+        data['tecido_outros'] = outroTecido.value;
+      }
+      return data;
+    }
+
+    function restore(data) {
+      document.querySelectorAll('input, textarea, select').forEach(el => {
+        const key = el.id || el.name;
+        if (!key) return;
+
+        if (el.type === 'checkbox') {
+          el.checked = !!data[el.name + '_' + el.value];
+        } else if (el.type === 'radio') {
+          el.checked = data[el.name] === el.value;
+        } else {
+          if (data[key] !== undefined) el.value = data[key];
+        }
+      });
+      // Restore the "Other" text input for fabric
+      const outroTecido = document.querySelector('input[type="text"][placeholder="Outros (descreva)"]');
+      if (outroTecido && data['tecido_outros'] !== undefined) {
+        outroTecido.value = data['tecido_outros'];
+      }
+    }
+
+    document.getElementById('save').addEventListener('click', () => {
+      localStorage.setItem(storageKey, JSON.stringify(serialize()));
+      // Use a more modern, non-blocking notification if possible, but alert is simple and works
+      alert('Dados salvos neste navegador.');
+    });
+
+    document.getElementById('load').addEventListener('click', () => {
+      const raw = localStorage.getItem(storageKey);
+      if (!raw) {
+        alert('Nenhum dado salvo encontrado.');
+        return;
+      }
+      restore(JSON.parse(raw));
+    });
+
+    document.getElementById('clear').addEventListener('click', () => {
+      // confirm() can be intrusive, but for a simple form like this it's acceptable.
+      if (confirm('Limpar todos os campos?')) {
+        document.querySelectorAll('input, textarea').forEach(el => {
+          if (el.type === 'checkbox' || el.type === 'radio') {
+            el.checked = false;
+          } else {
+            el.value = '';
+          }
+        });
+      }
+    });
+  </script>
+
+  <style>
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+        min-height: 0;
+      }
+      .container { margin: 20px; padding: 0; }
+      .card {
+        background: #ffffff;
+        border: 1px solid #ccc;
+        box-shadow: none;
+        padding: 12px;
+      }
+      .title { color: #000; }
+      label.block, legend { color: #111; }
+      .input, textarea {
+          background: #f0f0f0;
+          border-color: #aaa;
+          color: #000;
+      }
+      .actions { display: none; }
+    }
+  </style>
+</body>
+</html>
