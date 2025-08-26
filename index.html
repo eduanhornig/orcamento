@@ -90,7 +90,6 @@
       padding: 12px 0 6px; 
       margin-top: 10px; 
     }
-    /* --- CORREÇÃO APLICADA AQUI --- */
     .btns { 
       display: flex; 
       gap: 10px; 
@@ -155,17 +154,22 @@
             <label class="option"><input type="checkbox" name="tecido" value="linho"/> Linho</label>
             <label class="option"><input type="checkbox" name="tecido" value="camurca"/> Camurça</label>
             <label class="option"><input type="checkbox" name="tecido" value="chenille"/> Chenille</label>
+            <label class="option"><input type="checkbox" name="tecido" value="automotivo"/> Automotivo</label>
+            <label class="option"><input type="checkbox" name="tecido" value="colchao"/> Colchão</label>
             <label class="option"><input type="text" class="input" placeholder="Outros (descreva)"/></label>
           </div>
         </fieldset>
       </div>
       <div class="card">
         <fieldset>
-          <legend>Níveis de Sujidade</legend>
+          <legend>Nível de Sujidade</legend>
           <div class="row">
             <label class="option"><input type="radio" name="sujidade" value="leve"/> Leve</label>
             <label class="option"><input type="radio" name="sujidade" value="media"/> Média</label>
             <label class="option"><input type="radio" name="sujidade" value="pesada"/> Pesada</label>
+          </div>
+          <div style="margin-top: 10px;">
+            <textarea id="observacoes_sujidade" name="observacoes_sujidade" class="input" rows="2" placeholder="Observações (descreva a sujidade, se necessário)"></textarea>
           </div>
         </fieldset>
       </div>
@@ -176,10 +180,10 @@
       <fieldset>
         <legend>Procedimentos</legend>
         <div class="checkline">
-          <label class="option"><input type="checkbox" name="procedimentos" value="aspiracao"/> Aspiração</label>
-          <label class="option"><input type="checkbox" name="procedimentos" value="higienizacao"/> Higienização (Limpeza e desinfecção)</label>
-          <label class="option"><input type="checkbox" name="procedimentos" value="desinfeccao"/> Desinfecção</label>
-          <label class="option"><input type="checkbox" name="procedimentos" value="impermeabilizacao"/> Impermeabilização</label>
+          <label class="option"><input type="checkbox" name="procedimentos" value="higienizacao_aspiracao"/> Higienização (Limpeza e Aspiração)</label>
+          <label class="option"><input type="checkbox" name="procedimentos" value="neutralizacao_odores"/> Neutralização de Odores</label>
+          <label class="option"><input type="checkbox" name="procedimentos" value="desinfeccao_vapor"/> Desinfecção a Vapor (Antiácaro e Antibacteriana)</label>
+          <label class="option"><input type="checkbox" name="procedimentos" value="tratamento_couro"/> Tratamento de Couro</label>
         </div>
       </fieldset>
     </div>
@@ -199,11 +203,12 @@
       </fieldset>
     </div>
 
-    <!-- Tipo de sujeira -->
+    <!-- Tipo de Sujidade -->
     <div class="card" style="margin-top: var(--gap);">
       <fieldset>
-        <legend>Tipo de Sujeira</legend>
+        <legend>Tipo de Sujidade</legend>
         <div class="checkline">
+          <label class="option"><input type="checkbox" name="sujeira" value="sujidade-comum"/> Sujidade Comum</label>
           <label class="option"><input type="checkbox" name="sujeira" value="cafe"/> Café</label>
           <label class="option"><input type="checkbox" name="sujeira" value="suco"/> Suco</label>
           <label class="option"><input type="checkbox" name="sujeira" value="vinho"/> Vinho</label>
@@ -212,7 +217,7 @@
           <label class="option"><input type="checkbox" name="sujeira" value="maquiagem"/> Maquiagem</label>
           <label class="option"><input type="checkbox" name="sujeira" value="tinta-caneta"/> Tinta de Caneta</label>
           <label class="option"><input type="checkbox" name="sujeira" value="chocolate"/> Chocolate</label>
-          <label class="option"><input type="checkbox" name="sujeira" value="nodoas-frutas"/> Nódoas de Frutas</label>
+          <label class="option"><input type="checkbox" name="sujeira" value="manchas-frutas"/> Manchas de Frutas</label>
           <label class="option"><input type="checkbox" name="sujeira" value="sangue"/> Sangue</label>
           <label class="option"><input type="checkbox" name="sujeira" value="excremento"/> Excremento Humano/Animal</label>
           <label class="option"><input type="checkbox" name="sujeira" value="mau-cheiro"/> Mau cheiro</label>
@@ -226,11 +231,11 @@
     <!-- Assinaturas e Valor -->
     <div class="grid grid-2" style="margin-top: var(--gap);">
       <div class="card">
-        <label class="block" for="ass-prof">Assinatura do Profissional</label>
+        <label class="block" for="ass-prof">Profissional</label>
         <input id="ass-prof" name="ass-prof" class="input" placeholder="Nome completo" />
       </div>
       <div class="card">
-        <label class="block" for="ass-cli">Assinatura do Cliente</label>
+        <label class="block" for="ass-cli">Cliente</label>
         <input id="ass-cli" name="ass-cli" class="input" placeholder="Nome completo" />
       </div>
     </div>
@@ -351,4 +356,3 @@
   </style>
 </body>
 </html>
-
